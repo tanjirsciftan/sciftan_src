@@ -25,9 +25,11 @@
               <li class="active"><a [routerLink] ="['/']">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a [routerLink] ="['/register']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a [routerLink] ="['/login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-              <li><a (click)="onLogoutClick()" href="#">Logout</a></li>
+              <li><a *ngIf="authService.loggedIn()"  [routerLink] ="['/dashboard']"><span class="glyphicon glyphicon-user"></span> Dashboard</a></li>
+              <li><a *ngIf="authService.loggedIn()"  [routerLink] ="['/profile']"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+              <li><a *ngIf="!authService.loggedIn()" [routerLink] ="['/register']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a *ngIf="!authService.loggedIn()"  [routerLink] ="['/login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li><a *ngIf="authService.loggedIn()" (click)="onLogoutClick()" href="#">Logout</a></li>
             </ul>
           </div>
         </div>
